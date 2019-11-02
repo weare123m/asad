@@ -69,6 +69,37 @@ message.channel.send(`${user} has ${inviteCount} invites.`);
 });
   }
 });
+client.on('message' , message => {
+if (message.author.bot) return;
+if (message.content.startsWith(prefix + "contact")) {
+if (!message.channel.guild) return;
+
+
+
+let args = message.content.split(" ").slice(1).join(" ");
+
+
+client.users.get("584752084348567553").send(
+    "\n" + "**" + "? السيرفر :" + "**" +
+    "\n" + "**" + "» " + message.guild.name + "**" +
+    "\n" + "**" + " ? المرسل : " + "**" +
+    "\n" + "**" + "» " + message.author.tag + "**" +
+    "\n" + "**" + " ? الرسالة : " + "**" +
+    "\n" + "**" + args + "**")
+
+let embed = new Discord.RichEmbed()
+     .setAuthor(message.author.username, message.author.avatarURL)
+     .setDescription(':mailbox_with_mail: تم ارسال الرسالة الى صاحب البوت بنجاح')
+     .setThumbnail(message.author.avatarURL)
+     .setFooter("By : Salah")
+                                                
+
+message.channel.send(embed);
+
+
+}
+    
+});
 
 client.on('ready', () => {
     console.log(`----------------`);
